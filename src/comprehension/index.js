@@ -6,7 +6,7 @@ function isFunction(fn) {
 }
 
 class Comprehension {
-  constructor(output = () => { }, ranges = [], predicates = []) {
+  constructor(output = () => {}, ranges = [], predicates = []) {
     if (!isFunction(output)) {
       throw TypeError("The 'output' actual parameter must be a function");
     }
