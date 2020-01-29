@@ -31,8 +31,9 @@ module.exports = {
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'build'),
-    library: 'list-comprehension',
-    libraryTarget: 'umd'
+    library: 'list-comprehension-in-js',
+    libraryTarget: 'umd',
+    globalObject: 'this',
   },
   module: {
     rules: [
