@@ -1,28 +1,100 @@
-List Comprehension in JS
+# List Comprehension in JS
 
-WIP
+## Install
 
 ```sh
 npm i list-comprehension-in-js
 ```
 
+&nbsp;
+
+## The What
+
+It is a common pattern in functional programming, to the point that some programming languages like Haskell, Clojure, Perl, Python and others do support it directly with syntactic constructs. It allow us to express the _set builder-notation_ into our code.
+
+Let's take an example: `S = { 2*x | x € N, x^2 > 100 }`, where we are saying "take all the natural number which square is greater than `100`, double them and use these results to create a new set". The resulting set will be: `{ 22, 24, 26, ... }`.
+
+&nbsp;
+
+## The Why
+
+It reflects the idea of ​​having a set of candidates as solutions to a problem, on which transformations and filtering are applied to narrow the number of them, until right solutions are obtained.
+
+&nbsp;
+
+## The How
+
+Let's take Haskell as example. The following is the way we can express the previous set comprehension:
+
+```hs
+[ 2*x | x <- [1..], x^2 > 100 ]
+```
+
+Pretty terse notation, huh? The output will be an infinite, lazy list containing (potentially) all the elements of our set.
+
+Let's take another example. We want to generate all the right triangle that have an even perimeter. This is the Haskell way:
+
+```hs
+list = [
+    {-
+        The single element of the resulting list is a triple
+        containing the values of the ipothenuse and the two cathets
+    -}
+    (ipo, cat1, cat2) |
+
+    -- Three ranges for three variables
+    ipo <- [1..],
+    cat1 <- [1..ipo-1],
+    cat2 <-[1..cat1],
+
+    -- Two predicates to satisfy
+    ipo^2 == cat1^2 + cat2^2,
+    mod (ipo + cat1 + cat2) 2 == 0 ]
+```
+
+Ranges optimizations apart, it's worth noting that:
+
+* it is possible to have multiple ranges and variables into play
+* it is possible to use the current value taken by a previous defined variable as upper/ lower limit for a following range
+* it is possible to have more predicates to satisfy
+* the output element expression is custom
+
+&nbsp;
+
+## The How in JavaScript
+
+This library is a custom solution to achieve all of this great possibilities in JS!\
+It is based on [`ES6` generators](https://dev.to/jfet97/javascript-iterators-and-generators-synchronous-generators-3ai4), to achieve the infinite, lazy approach:\
 ```js
-const { Comprehension, range, take } = require("list-comprehension-in-js");
+const { Comprehension, range } = require("list-comprehension-in-js");
 
 let allRightTrianglesWithEvenPerimeter = new Comprehension(
-    (i, c1, c2) => ({ i, c1, c2 }),
+    // custom output
+    (ipo, cat1, cat2) => ({ ipo, cat1, cat2 }),
     [
+        // ranges
         () => range(1, Infinity),
-        (i) => range(1, i - 1),
-        (_, c1) => range(1, c1)
+        (ipo) => range(1, ipo - 1),
+        (_, cat1) => range(1, cat1)
     ],
     [
-        (i, c1, c2) => (i ** 2 == c1 ** 2 + c2 ** 2),
-        (i, c1, c2) => ((i + c1 + c2) % 2 == 0),
+        // predicates to satisfy
+        (ipo, cat1, cat2) => (ipo ** 2 == cat1 ** 2 + cat2 ** 2),
+        (ipo, cat1, cat2) => ((ipo + cat1 + cat2) % 2 == 0),
     ]
 );
+```
 
-for (const triangle of take(allRightTrianglesWithEvenPerimeter, 12, 10)) {
-    console.log(`hyp: ${triangle.i}, c1: ${triangle.c1}, c2:${triangle.c2}`);
+Where `range` is nothing more than a generator function that provides an [iterable](https://dev.to/jfet97/javascript-iterators-and-generators-synchronous-iterators-141d) of integer numbers and the `allRightTrianglesWithEvenPerimeter` is itself an iterable too!\
+So the library perfectly fits in the JavaScript ecosystem.
+
+There is also an utility to extract a finite part of the infinite list, putting the elements into an array:
+```js
+const { take } = require("list-comprehension-in-js");
+
+const finiteList = take(allRightTrianglesWithEvenPerimeter, 5, 10);
+
+for (const triangle of finiteList) {
+    console.log(`hyp: ${triangle.ipo}, c1: ${triangle.cat1}, c2:${triangle.cat2}`);
 }
 ```
