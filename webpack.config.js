@@ -25,8 +25,8 @@ module.exports = {
   mode: "production",
   entry: {
     'index': './src/index.js',
-    'range': './src/range.js',
-    'utils': './src/utils.js',
+    'range/index': './src/range/index.js',
+    'utils/index': './src/utils/index.js',
   },
   output: {
     filename: '[name].js',

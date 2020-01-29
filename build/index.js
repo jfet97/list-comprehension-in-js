@@ -1,6 +1,6 @@
 /*!
  * 
- *   list-comprehension-in-js v0.0.3
+ *   list-comprehension-in-js v0.0.7
  *   https://github.com/jfet97/list-comprehension-in-js
  * 
  *   Copyright (c) Andrea Simone Costa (https://github.com/jfet97)
