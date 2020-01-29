@@ -1,0 +1,59 @@
+{
+  "name": "list-comprehension-in-js",
+  "version": "0.0.1",
+  "description": "List Comprehension in JavaScript",
+  "main": "build/index.js",
+  "files": [
+    "build"
+  ],
+  "scripts": {
+    "build": "webpack",
+    "test": "jest",
+    "prepare": "npm run build",
+    "trypublish": "npm publish || true"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jfet97/list-comprehension-in-js"
+  },
+  "author": "Andrea Simone Costa <andrysimo1997@gmail.com> (https://github.com/jfet97)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jfet97/list-comprehension-in-js/issues"
+  },
+  "homepage": "https://github.com/jfet97/list-comprehension-in-js",
+  "keywords": [
+    "library",
+    "es6",
+    "list",
+    "comprehension"
+  ],
+  "devDependencies": {
+    "@babel/cli": "^7.8.3",
+    "@babel/core": "^7.8.3",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.8.3",
+    "@babel/polyfill": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "babel-loader": "^8.0.6",
+    "babel-preset-minify": "^0.5.0",
+    "css-loader": "^3.4.2",
+    "file-loader": "^5.0.2",
+    "jest": "^25.1.0",
+    "prettier": "^1.19.1",
+    "prettier-webpack-plugin": "^1.2.0",
+    "style-loader": "^1.1.3",
+    "url-loader": "^3.0.0",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.8.3"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/scripts/testMock.js",
+      "\\.(css|less)$": "<rootDir>/scripts/testMock.js"
+    }
+  }
+}
