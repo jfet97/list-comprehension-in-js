@@ -1,15 +1,11 @@
 {
   "name": "list-comprehension-in-js",
-  "version": "0.0.8",
+  "version": "0.0.10",
   "description": "List Comprehension in JavaScript",
   "files": [
     "build"
   ],
-  "type": "module",
   "main": "./build/index.js",
-  "exports": {
-    "./": "./build/"
-  },
   "scripts": {
     "build": "webpack",
     "test": "jest",
