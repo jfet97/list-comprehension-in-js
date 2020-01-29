@@ -2,6 +2,10 @@ List Comprehension in JS
 
 WIP
 
+```sh
+npm i list-comprehension-in-js
+```
+
 ```js
 const { Comprehension, range, take } = require("list-comprehension-in-js");
 
