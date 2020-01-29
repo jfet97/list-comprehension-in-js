@@ -64,7 +64,7 @@ Ranges optimizations apart, it's worth noting that:
 ## The How in JavaScript
 
 This library is a custom solution to achieve all of this great possibilities in JS!\
-It is based on [`ES6` generators](https://dev.to/jfet97/javascript-iterators-and-generators-synchronous-generators-3ai4), to achieve the infinite, lazy approach:\
+It is based on [`ES6` generators](https://dev.to/jfet97/javascript-iterators-and-generators-synchronous-generators-3ai4), to achieve the infinite, lazy approach:
 ```js
 const { Comprehension, range } = require("list-comprehension-in-js");
 
