@@ -95,6 +95,53 @@ const { take } = require("list-comprehension-in-js");
 const finiteList = take(allRightTrianglesWithEvenPerimeter, 5, 10);
 
 for (const triangle of finiteList) {
-    console.log(`hyp: ${triangle.ipo}, c1: ${triangle.cat1}, c2:${triangle.cat2}`);
+    console.log(`hyp: ${triangle.ipo}, c1: ${triangle.cat1}, c2: ${triangle.cat2}`);
+}
+/*
+{hyp: 30, c1: 24, c2: 18}
+{hyp: 34, c1: 30, c2: 16}
+{hyp: 35, c1: 28, c2: 21}
+{hyp: 37, c1: 35, c2: 12}
+{hyp: 39, c1: 36, c2: 15}
+*/
+```
+
+&nbsp;
+
+## Utilities API
+
+### range
+Create an iterable which will output a set of **increasing** numbers (`start` must be `<=` than `end`):
+```js
+function* range(start, end, step = v => v) {
+    // ...
 }
 ```
+* **start**: the integer value from which start to generate the numbers
+* **end**: the last integer value to take
+* **step**: a mapper function to eventually transform each produced value
+
+### rangeReversed
+Create an iterable which will output a set of **decreasing** numbers (`start` must be `>=` than `end`):
+```js
+function* rangeReversed(start, end, step = v => v) {
+    // ...
+}
+```
+* **start**: the integer value from which start to generate the numbers
+* **end**: the last integer value to take
+* **step**: a mapper function to eventually transform each produced value
+
+### take
+Take at most `nOfElements` starting from the index `start`.\
+It returns an array containing the elements.
+```js
+function take(listIterable = [], nOfElements = 0, start = 0) {
+    // ...
+}
+```
+
+* **listIterable**: any iterable, like the one returned by the `Comprehension` constructor
+* **nOfElements**: number of elements to pick
+* **start**: starting index
+

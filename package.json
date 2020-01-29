@@ -1,6 +1,6 @@
 {
   "name": "list-comprehension-in-js",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "List Comprehension in JavaScript",
   "files": [
     "build"
