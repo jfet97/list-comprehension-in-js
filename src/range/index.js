@@ -11,7 +11,7 @@ function* rangeGenerator(start = 0, end = 0, step = v => v) {
 }
 
 function* range(start, end, step = v => v) {
-  if (typeof start === "number" && typeof end == "number") {
+  if (typeof start !== "number" || typeof end !== "number") {
     throw TypeError(
       "The 'start' and the 'end' actual parameters must be numbers"
     );
@@ -23,7 +23,7 @@ function* range(start, end, step = v => v) {
 }
 
 function* rangeReversed(start, end, step = v => v) {
-  if (typeof start === "number" && typeof end == "number") {
+  if (typeof start !== "number" || typeof end !== "number") {
     throw TypeError(
       "The 'start' and the 'end' actual parameters must be numbers"
     );
