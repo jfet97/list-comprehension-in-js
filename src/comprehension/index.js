@@ -6,12 +6,12 @@ function isFunction(fn) {
 }
 
 class Comprehension {
-  constructor(output = () => {}, ranges = [], predicates = []) {
+  constructor(output = () => { }, ranges = [], predicates = []) {
     if (!isFunction(output)) {
       throw TypeError("The 'output' actual parameter must be a function");
     }
 
-    if (!ranges.every(isFunction) || !predicates.every(isFuncion)) {
+    if (!ranges.every(isFunction) || !predicates.every(isFunction)) {
       throw TypeError(
         "The 'ranges' and the 'predicates' actual parameters must be functions arrays"
       );
